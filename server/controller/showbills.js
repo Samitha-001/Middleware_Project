@@ -4,7 +4,7 @@ const billView = async (req, res) => {
     try {
       const bill = await Bill.find();
       res.json(bill);
-      console.log(res.data)
+      console.log(res)
     } catch (error) {
         
       console.error(error);
