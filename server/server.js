@@ -1,7 +1,26 @@
 const express = require("express")
+const cors = require("cors")
 
 const app = express()
 
+const test = 'Hello from server'
 
+const corsOptions = {
+    origin: "http://localhost:3000", // Replace with your frontend URL
+    credentials: true,
+  };
+  
+  app.use(cors(corsOptions));
+  
+  // Set CORS headers
+  app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000'); // Change this to the actual origin of your client
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    next();
+  });
+
+  app.use("/", require("./routes/routes"));
 
 app.listen(9000, ()=>{console.log("Hey this is web portal in 9000")})

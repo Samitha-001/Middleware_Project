@@ -1,24 +1,36 @@
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios'
+
 
 function App() {
+
+  // const billDetails = () => {
+  //   console.log("hey I am the bill details")
+  // }
+
+
+
+  
+    const billDetails = async () => {
+ 
+    console.log("bill Details clickerd");
+   try {
+    await axios.get('http://localhost:9000/test')
+    .then((res) => {
+      console.log("hey" + res)
+      // window.location.href= res.data.url;
+    }).catch((error) => {console.log("Error in checkout", error)})
+   } catch (error) {
+    console.log("Error in catch in try catch" + error)
+   }
+}
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <>
+      <button onClick={billDetails}>
+          Click for the bill details
+      </button>
+   </>
   );
 }
 
