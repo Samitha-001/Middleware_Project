@@ -11,6 +11,6 @@ router.use(
     })
   );
 
-  router.get("/test", console.log("Hey I am in the server side"));
+  router.get("/test", testRun);
 
   module.exports = router

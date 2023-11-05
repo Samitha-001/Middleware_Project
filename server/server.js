@@ -1,9 +1,10 @@
 const express = require("express")
 const cors = require("cors")
+const mongoose = require("mongoose");
 
 const app = express()
 
-const test = 'Hello from server'
+
 
 const corsOptions = {
     origin: "http://localhost:3000", // Replace with your frontend URL
@@ -22,5 +23,11 @@ const corsOptions = {
   });
 
   app.use("/", require("./routes/routes"));
+
+  // database connection
+mongoose
+.connect("mongodb+srv://rathnayakesamitha0101:FkzLKQIhJ568PAuM@cluster0.xeelrrz.mongodb.net/")
+.then(() => console.log("database connected"))
+.catch((err) => console.log("database not connected ", err));
 
 app.listen(9000, ()=>{console.log("Hey this is web portal in 9000")})
