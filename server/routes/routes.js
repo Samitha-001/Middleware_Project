@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 const cors = require("cors");
 
-const testRun = require("../controller/showbills")
+const bills = require("../controller/showbills")
+const billById = require("../controller/showByID")
 
 router.use(
     cors({
@@ -11,6 +12,7 @@ router.use(
     })
   );
 
-  router.get("/test", testRun);
+  router.get("/billDetails", bills);
+  router.get("/billDetails/:id", billById);
 
   module.exports = router
