@@ -18,7 +18,7 @@ function App() {
    try {
     await axios.get('http://localhost:9000/test')
     .then((res) => {
-      console.log("hey " + res.data)
+      console.log("hey " + res.data.title)
       // window.location.href= res.data.url;
     }).catch((error) => {console.log("Error in checkout", error)})
    } catch (error) {

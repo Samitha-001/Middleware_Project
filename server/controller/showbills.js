@@ -1,18 +1,15 @@
-// const bill = require("../models/Post")
+const Bill = require("../models/Bill")
 
 const billView = async (req, res) => {
-    // try {
-    //   const bill = await Post.find();
-    //   res.json(posts);
-    //   console.log(posts)
-    // } catch (error) {
-    //   console.error(error);
-    //   res.status(500).json({ error: 'An error occurred in viewing posts' });
-    // }
-   
-      res.send('This is an example route2.');
-   
+    try {
+      const bill = await Bill.find();
+      res.json(bill);
+      console.log(res.data)
+    } catch (error) {
+        
+      console.error(error);
+      res.status(500).json({ error: 'An error occurred' });
+    }
   };
-  
 
   module.exports = billView
